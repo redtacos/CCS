@@ -12,9 +12,9 @@ namespace ccs.Controllers
             var scoreboardsPath = Environment.GetEnvironmentVariable("APPSETTING_SCOREBOARD_PATH");
             var filePath = Path.Combine(scoreboardsPath, "picoctf", "scoreboard.json");
 
-            using (var r = new StreamReader(filePath))
+            using (var reader = new StreamReader(filePath))
             {
-                var json = r.ReadToEnd();
+                var json = reader.ReadToEnd();
                 var scoreboard = JsonConvert.DeserializeObject<Scoreboard>(json);
                 return scoreboard;
             }
