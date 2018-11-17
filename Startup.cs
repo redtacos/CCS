@@ -33,7 +33,7 @@ namespace ccs
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseStatusCodePages();
             }
 
             app.UseStaticFiles();
