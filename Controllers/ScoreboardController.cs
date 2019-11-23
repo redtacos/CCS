@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ccs.Controllers
 {
@@ -8,10 +9,17 @@ namespace ccs.Controllers
 
         public IActionResult Index()
         {
-            var scoreboard = scoreService.getScoreboard();
-            ViewData["Scoreboard"] = scoreboard;
+            try
+            {
+                var scoreboard = scoreService.getScoreboard();
+                ViewData["Scoreboard"] = scoreboard;
 
-            return View();
+                return View();
+            }
+            catch(Exception e)
+            {
+                return NotFound();
+            }
         }
     }
 }
